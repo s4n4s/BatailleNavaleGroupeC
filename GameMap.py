@@ -1,7 +1,7 @@
 import Tools
 
 
-class MainGame(Tools.Tools):
+class GameMap(Tools.Tools):
 
     WIDTH = 10
     map = []
@@ -46,6 +46,7 @@ class MainGame(Tools.Tools):
             i = i + 1
 
 
+
     def showMap(self):
         self.saveFileBin("map_bin",self.map)
         return self.map
@@ -53,17 +54,3 @@ class MainGame(Tools.Tools):
 
     def openMap(self):
         return self.openFileBin("map_bin")
-
-
-mg = MainGame()
-mg.insertCoord()
-
-i = 0
-while i < 10:
-    j = 0
-    print("\n", end="")
-    while j < 10:
-        #print(mg.showMap()[i][j], end=" ")
-        print(mg.openMap()[i][j], end=" ")
-        j = j + 1
-    i = i + 1
