@@ -46,9 +46,6 @@ class MainGame(Tools.Tools):
             i = i + 1
 
 
-
-
-
     def showMap(self):
         self.saveFileBin("map_bin",self.map)
         return self.map
