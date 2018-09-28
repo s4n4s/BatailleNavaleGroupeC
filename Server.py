@@ -1,5 +1,6 @@
 import threading, time, socket
 from GameMap import GameMap
+from Tools import Tools
 adminOnline = False
 map = GameMap()
 nbPlayers = 4
@@ -12,7 +13,7 @@ class Server(threading.Thread):
     def __init__(self, clientsocket):
         threading.Thread.__init__(self)
         self.clientsocket = clientsocket
-        #self.event = event
+        self.tool = Tools()
 
     def run(self):
 
@@ -59,7 +60,14 @@ class Server(threading.Thread):
                             self.clientsocket.send("Veuillez saisir un nombre valide".encode())"""
 
                     else:
-                        self.clientsocket.send("Echec de l'authentification.".encode())
+                        users = self.tool.readFile("users.txt")
+                        users = users.split("\n")
+                        result = r in users
+
+                        if result:
+                            print("works")
+                        else:
+                            self.clientsocket.send("Echec de l'authentification".encode())
                 else:
                     self.clientsocket.send("L'administrateur est en ligne\nVeuillez saisir vos identifiants utilisateur".encode())
                 #self.clientsocket.send(r.encode())
