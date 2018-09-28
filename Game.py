@@ -20,6 +20,8 @@ class Game(Tools.Tools):
             i = i + 1
         return False
 
+    def isFinished:
+
     def saveStatus(self, enteredCoord):
         if self.isHit(enteredCoord):
             self.map[enteredCoord[0]][enteredCoord[1]] = "T"
