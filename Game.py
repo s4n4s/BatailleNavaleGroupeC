@@ -16,14 +16,25 @@ class Game(Tools.Tools):
             if enteredCoord[0] == self.coordinates[i][0] \
                 and enteredCoord[1] == self.coordinates[i][1] \
                 and self.coordinates[i][1] != "T" :
+                self.coordinates.remove(self.coordinates[i])
                 return True
             i = i + 1
         return False
 
-    def isFinished:
+    def isFinished(self):
+        if not self.coordinates:
+            return True
+        return False
 
     def saveStatus(self, enteredCoord):
         if self.isHit(enteredCoord):
             self.map[enteredCoord[0]][enteredCoord[1]] = "T"
             self.saveFileBin("map_bin", self.map)
         return self.map
+
+    def show(self):
+        print(self.coordinates)
+
+gm = Game()
+gm.show()
+print(gm.isFinished())
