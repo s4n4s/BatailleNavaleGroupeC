@@ -33,8 +33,8 @@ class GameMap(Tools.Tools):
             print("Cet emplacement est reservé")
             return False
 
-    def insertCoord(self):
-        coordinate = self.formatCoord("map_1.txt")
+    def insertCoord(self, fileName):
+        coordinate = self.formatCoord(fileName)
         i = 0
         while(i < len(coordinate)):
             if not self.isOvertaking(coordinate[i]):
