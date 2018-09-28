@@ -1,5 +1,6 @@
-import Game
-import GameMap
+from Game import Game
+from GameMap import GameMap
+from Server import Server
 import User
 
 
@@ -8,16 +9,16 @@ class GameRun:
 	game = ""
 	gameMap = ""
 	user = ""
+	server = ""
+	def __init__(self, clientSocket):
+		self.game = Game()
+		self.gameMap = GameMap()
+		self.server = Server(clientSocket)
 
-	def __init__(self):
-		game = Game()
-		gameMap = GameMap()
+	def GameExec(self):
+		self.server.initConn()
 
-
-	def typeOfCla(self):
-		type(self.game)
-		type(self.gameMap)
 
 test = GameRun()
-test.typeOfCla()
+print(test.typeOfCla())
 
